@@ -1,0 +1,43 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "correo": "janneth@yopmail.com",
+      "nombre": "Janneth Carballo",
+      "direccion": "av. siempre viva",
+      "telefono": "73407102",
+      "edad": 30
+    },
+    {
+      "id": 2,
+      "correo": "henry_mail@yopmail.com",
+      "nombre": "Henry Sanchez Carvajal",
+      "direccion": "calle 42 # 100",
+      "telefono": "78818081",
+      "edad": 35
+    },
+    {
+      "id": 3,
+      "correo": "pepe.mail@yopmail.com",
+      "nombre": "jose perez",
+      "direccion": null,
+      "telefono": null,
+      "edad": null
+    }
+  ],
+  "tareas": [
+    {
+      "id": 1,
+      "descripcion": "revisar pendientes",
+      "fechaInicio": "2022-10-22 22:00:00",
+      "fechaFin": "2022-10-23 12:00:00",
+      "prioridad": "baja",
+      "fk_usuario": 1
+    }
+  ],
+  "prioridads": [
+    "baja",
+    "media",
+    "alta"
+  ]
+}

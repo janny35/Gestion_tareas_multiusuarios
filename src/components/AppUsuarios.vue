@@ -184,6 +184,9 @@ export default {
             this.$refs.closeModalDelete.click();
             this.datosUsuario = this.resetDatosUsuario();
             this.getData();
+        },
+        abrirTareas(idUsuario) {
+            this.$router.push({name: 'tareas', params: { id: idUsuario }});
         }
     },
     mounted () {
@@ -192,11 +195,6 @@ export default {
     computed: {
     },
     watch: {
-        // usuarios(newValue, oldValue) {
-        //     if (newValue && newValue.length > 0) {
-        //         this.listaUsuarios = newValue;
-        //     }
-        // },
         async findUser(newValue, oldValue) {
             if (newValue.length > 0) {
                 try {

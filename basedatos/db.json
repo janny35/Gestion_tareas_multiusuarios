@@ -28,16 +28,24 @@
   "tareas": [
     {
       "id": 1,
-      "descripcion": "revisar pendientes",
-      "fechaInicio": "2022-10-22 22:00:00",
-      "fechaFin": "2022-10-23 12:00:00",
+      "descripcion": "entregar proyecto final",
+      "fecha": "2022-10-23",
+      "prioridad": "alta",
+      "fk_usuario": 1
+    },
+    {
+      "id": 2,
+      "descripcion": "asistir a oficina",
+      "fecha": "2022-10-24",
+      "prioridad": "media",
+      "fk_usuario": 1
+    },
+    {
+      "id": 3,
+      "descripcion": "inicia modulo 7",
+      "fecha": "2022-10-25",
       "prioridad": "baja",
       "fk_usuario": 1
     }
-  ],
-  "prioridads": [
-    "baja",
-    "media",
-    "alta"
   ]
 }

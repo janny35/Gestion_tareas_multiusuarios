@@ -34,7 +34,7 @@ pipeline {
       steps{
           unstash "stash-artifact"
           sh "docker load -i proyecto-final-front.tar"
-          sh "docker rm proyecto-final-front -f || true"
+          sh "docker rm proyecto-final-front:1.0.0 -f || true"
           sh "docker run -idt -p 8888:80 --name proyecto-final-front proyecto-final-front:1.0.0"
           sh "netstat -tpln | grep 8888"
       }
@@ -44,7 +44,7 @@ pipeline {
       steps{
           unstash "stash-artifact"
           sh "docker load -i proyecto-final-front.tar"
-          sh "docker rm proyecto-final-front -f || true"
+          sh "docker rm proyecto-final-front:1.0.0 -f || true"
           sh "docker run -idt -p 8881:80 --name proyecto-final-front proyecto-final-front:1.0.0"
       }
     }

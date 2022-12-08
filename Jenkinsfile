@@ -4,7 +4,7 @@ pipeline {
     string defaultValue: 'frontend-docker', description: 'rama de proyecto frontend', name: 'BRANCH', trim: false
     string defaultValue: 'debian', description: 'nodo esclavo en VM', name: 'LABEL_NODE_DEV', trim: false
     string defaultValue: 'debian', description: 'nodo ambiente QA', name: 'LABEL_NODE_QA', trim: false
-    string defaultValue: 'master', description: 'nodo Master principal', name: 'LABEL_NODE_PROD', trim: false
+    string defaultValue: 'debian_slave', description: 'nodo Master principal', name: 'LABEL_NODE_PROD', trim: false
   }
   environment{
     DEV_NODE="${params.LABEL_NODE_DEV}"
@@ -45,7 +45,7 @@ pipeline {
           unstash "stash-artifact"
           sh "docker load -i proyecto-final-front.tar"
           sh "docker container rm proyecto-final-front -f || true"
-          sh "docker run -idt -p 8881:80 --name proyecto-final-front proyecto-final-front:1.0.0"
+          sh "docker run -idt -p 8888:80 --name proyecto-final-front proyecto-final-front:1.0.0"
       }
     }
   }

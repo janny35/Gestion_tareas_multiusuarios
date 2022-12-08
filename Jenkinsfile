@@ -13,7 +13,7 @@ pipeline {
   }
   stages {
     stage('cloning') {
-      agent { label PROD_NODE }
+      agent { label DEV_NODE }
       steps {
         git branch: "${params.BRANCH}", url: 'https://github.com/janny35/Gestion_tareas_multiusuarios.git'
         sh 'echo "clonación finalizada"'
@@ -21,7 +21,7 @@ pipeline {
       }
     }
     stage('building in dev') {
-      agent { label PROD_NODE }
+      agent { label DEV_NODE }
       steps {
         sh 'docker build -t proyecto-final-front:1.0.0 .'
         sh "docker save -o proyecto-final-front.tar proyecto-final-front:1.0.0"
@@ -30,7 +30,7 @@ pipeline {
       }
     }
     stage('deploying and testing in QA') {
-      agent { label PROD_NODE }
+      agent { label QA_NODE }
       steps{
           unstash "stash-artifact"
           sh "docker load -i proyecto-final-front.tar"

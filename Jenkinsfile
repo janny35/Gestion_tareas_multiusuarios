@@ -29,13 +29,23 @@ pipeline {
         archiveArtifacts 'proyecto-final-front.tar'
       }
     }
-    stage("Deployment on PROd environment"){
-      agent { label PROD_NODE }
+    stage('deploying and testing in QA') {
+      agent { label QA_NODE }
       steps{
           unstash "stash-artifact"
           sh "docker load -i proyecto-final-front.tar"
           sh "docker rm proyecto-final-front -f || true"
           sh "docker run -idt -p 8888:80 --name proyecto-final-front proyecto-final-front:1.0.0"
+          sh "netstat -tpln | grep 8888"
+      }
+    }
+    stage("Deployment on PROD environment"){
+      agent { label PROD_NODE }
+      steps{
+          unstash "stash-artifact"
+          sh "docker load -i proyecto-final-front.tar"
+          sh "docker rm proyecto-final-front -f || true"
+          sh "docker run -idt -p 8881:80 --name proyecto-final-front proyecto-final-front:1.0.0"
       }
     }
   }

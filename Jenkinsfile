@@ -43,6 +43,7 @@ pipeline {
       agent { label PROD_NODE }
       steps{
           unstash "stash-artifact"
+          sh 'echo "EN VM AMBIENTE PROD"'
           sh "docker load -i proyecto-final-front.tar"
           sh "docker container rm proyecto-final-front -f || true"
           sh "docker run -idt -p 8888:80 --name proyecto-final-front proyecto-final-front:1.0.0"

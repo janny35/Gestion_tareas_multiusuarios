@@ -3,6 +3,7 @@
         <div class="row mb-4">
             <h2 class="col-6 tm-text-primary">
                 Usuarios Registrados: {{usuarios.length}}
+                <br> Ambiente dockerizado
             </h2>
             <div class="col-6 d-flex justify-content-center align-items-center">
                 <button class="btn btn-primary tm-btn-prev mb-2" data-toggle="modal" data-target="#modalFormUser" ref="openModal"><i class="fa fa-plus"></i> Agregar usuario</button>

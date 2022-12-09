@@ -3,10 +3,10 @@
         <div class="container-fluid tm-container-small">
             <div class="row">
                 <div class="col-lg-8 col-md-7 col-12 px-5 mb-3">
-                    Copyright 2020 Catalog-Z Company. All rights reserved.
+                    proyecto Final 2022 Diplomado FullStack janneth.carballo@gmail.com.
                 </div>
                 <div class="col-lg-4 col-md-5 col-12 px-5 text-right">
-                    Designed by <a href="https://templatemo.com" class="tm-text-gray" rel="sponsored" target="_parent">TemplateMo</a>
+                    Proyecto Docker<a href="https://templatemo.com" class="tm-text-gray" rel="sponsored" target="_parent">Janneth Carballo Chambi</a>
                 </div>
             </div>
         </div>

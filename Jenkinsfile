@@ -7,29 +7,31 @@ pipeline {
     string defaultValue: 'virtual_prod', description: 'maquina virtual para el  Master principal', name: 'LABEL_NODE_PROD', trim: false
   }
   environment{
-    DEV_NODE="${params.LABEL_NODE_DEV}"
-    QA_NODE="${params.LABEL_NODE_QA}"
-    PROD_NODE="${params.LABEL_NODE_PROD}"
+    DEVELOP="${params.LABEL_NODE_DEV}"
+    QA="${params.LABEL_NODE_QA}"
+    PRODUCTION="${params.LABEL_NODE_PROD}"
   }
   stages {
     stage('cloning') {
-      agent { label DEV_NODE }
+      agent { label DEVELOP }
       steps {
         git branch: "${params.BRANCH}", url: 'https://github.com/janny35/Gestion_tareas_multiusuarios.git'
-        sh 'echo "clonación finalizada"'
+        sh 'echo "Repositorio Clonado"'
       }
     }
     stage('building in dev') {
-      agent { label DEV_NODE }
+      agent { label DEVELOP }
       steps {
+        sh 'echo "Iniciando dev"'
         sh 'docker build -t proyecto_docker_frontend:0.0.1 .'
         sh "docker save -o proyecto_docker_frontend.tar proyecto_docker_frontend:0.0.1"
         stash name: "stash-artifact", includes: "proyecto_docker_frontend.tar"
         archiveArtifacts 'proyecto_docker_frontend.tar'
+        sh 'echo "Finalizo etapa develop"'
       }
     }
     stage('deploying and testing in QA') {
-      agent { label QA_NODE }
+      agent { label QA }
       steps{
           unstash "stash-artifact"
           sh "docker load -i proyecto_docker_frontend.tar"
@@ -39,7 +41,7 @@ pipeline {
       }
     }
     stage("Deployment on PROD environment"){
-      agent { label PROD_NODE }
+      agent { label PRODUCTION }
       steps{
           unstash "stash-artifact"
           sh "docker load -i proyecto_docker_frontend.tar"
